@@ -189,7 +189,7 @@ const AuthorSection = () => {
                 Actualmente, soy miembro activo de la 'Célula de Desarrollo' del Sistema de Atención Integral al Estudiante y Gestión Académica (SIS-UNETI), donde aporto en la arquitectura y backend del proyecto. Soy estudiante de Ingeniería en Informática en la UNETI, comprometido con la excelencia técnica y la innovación en la arquitectura de computadores.
               </p>
               <div className="flex gap-4">
-                <a href="https://github.com/eltonisaacteran" target="_blank" rel="noopener noreferrer" className="p-2 bg-white rounded-lg border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 transition-all">
+                <a href="https://github.com/elton28/Portafolio-Arquitectura-UNETI" target="_blank" rel="noopener noreferrer" className="p-2 bg-white rounded-lg border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 transition-all">
                   <Github size={20} />
                 </a>
                 <a href="https://www.linkedin.com/in/elton-isaac-teran" target="_blank" rel="noopener noreferrer" className="p-2 bg-white rounded-lg border border-slate-200 text-slate-600 hover:text-indigo-600 hover:border-indigo-200 transition-all">
