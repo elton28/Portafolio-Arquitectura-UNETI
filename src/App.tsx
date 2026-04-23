@@ -735,7 +735,7 @@ const Footer = () => (
         </div>
         <div className="flex flex-col items-center md:items-end gap-4">
           <div className="flex gap-4">
-            <a href="https://github.com/eltonisaacteran" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-indigo-600 transition-colors">
+            <a href="https://github.com/elton28/Portafolio-Arquitectura-UNETI" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-indigo-600 transition-colors">
               <Github size={20} />
             </a>
             <a href="https://www.linkedin.com/in/elton-isaac-teran" target="_blank" rel="noopener noreferrer" className="p-2 bg-slate-800 rounded-lg hover:bg-indigo-600 transition-colors">
