@@ -28,6 +28,7 @@ import DispositivosMP4 from "./assets/Dispositivos.mp4";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,10 +72,27 @@ const Navbar = () => {
           ))}
         </div>
 
-        <button className="md:hidden p-2 text-slate-600">
+        <button className="md:hidden p-2 text-slate-600" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <Layers size={24} />
         </button>
       </div>
+      {isMenuOpen && (
+        <div className="md:hidden bg-white/80 backdrop-blur-md">
+          <div className="container mx-auto px-6 pb-4 flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors flex items-center gap-1.5"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <link.icon size={16} />
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
@@ -734,7 +752,7 @@ const Practice2 = () => {
                   <p>
                     En el siguiente video se desmonta una computadora para identificar las diferentes memorias del computador y describir brevemente su función.
                   </p>
-                  <video className="rounded-xl max-w-md mx-auto" controls>
+                  <video className="rounded-xl max-w-md w-full mx-auto" controls>
                     <source src={MemoriaMP4} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
@@ -825,7 +843,7 @@ const Practice2 = () => {
                   <p>
                     En el siguiente video se conectan dos dispositivos de entrada y dos de salida a un computador, describiendo los cables y conectores utilizados.
                   </p>
-                  <video className="rounded-xl max-w-md mx-auto" controls>
+                  <video className="rounded-xl max-w-md w-full mx-auto" controls>
                     <source src={DispositivosMP4} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
