@@ -21,6 +21,8 @@ import fotoElton from "./assets/FotoElton.JPG";
 import cpu1 from "./assets/foto1.jpg";
 import cpu2 from "./assets/foto2.jpg";
 import cpu3 from "./assets/foto3.jpeg";
+import MemoriaMOV from "./assets/Memoria.MOV";
+import DispositivosMOV from "./assets/Dispositivos.MOV";
 
 // --- Components ---
 
@@ -376,24 +378,13 @@ const Practice1 = () => {
           </div>
         </div>
 
-      </div>
-    </section>
-  );
-};
-
-const Practice2 = () => {
-  return (
-    <section id="practica2" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <SectionTitle subtitle="Práctica de Laboratorio 2">Introducción a la Arquitectura del Computador</SectionTitle>
-        
         <div className="max-w-5xl mx-auto space-y-32"> {/* Espaciado grande entre actividades */}
 
           {/* =========================================
               ACTIVIDAD 1: ENSAYO 
           ========================================= */}
           <div>
-            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3">
+            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3 mt-12">
               <BookOpen className="text-indigo-600" size={32} />
               1. Futuro de la Ingeniería en Informática
             </h3>
@@ -711,6 +702,137 @@ const Practice2 = () => {
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Practice2 = () => {
+  return (
+    <section id="practica2" className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <SectionTitle subtitle="Práctica de Laboratorio 2">Memoria y Funcionamiento del Computador</SectionTitle>
+        
+        <div className="max-w-5xl mx-auto space-y-20">
+
+          {/* === Memoria y jerarquía de almacenamiento === */}
+          <div>
+            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3">
+              <Database className="text-indigo-600" size={32} />
+              Memoria y jerarquía de almacenamiento
+            </h3>
+
+            {/* --- 1. Identificación de Memoria --- */}
+            <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden mb-8">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-100 rounded-bl-full opacity-50 z-0"></div>
+              <div className="relative z-10">
+                <h4 className="font-display font-bold text-2xl mb-6 text-slate-900 leading-tight">
+                  1. Identificación de Memoria
+                </h4>
+                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-5 text-justify">
+                  <p>
+                    En el siguiente video se desmonta una computadora para identificar las diferentes memorias del computador y describir brevemente su función.
+                  </p>
+                  <video className="rounded-xl max-w-md mx-auto" controls>
+                    <source src={MemoriaMOV} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* === Funcionamiento del Computador === */}
+          <div>
+            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3">
+              <Cpu className="text-indigo-600" size={32} />
+              Funcionamiento del Computador
+            </h3>
+
+            {/* --- 1. Comparación de especificaciones --- */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm mb-8 overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[800px]">
+                <thead className="bg-slate-900 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-sm font-semibold">Modelo</th>
+                    <th className="px-6 py-4 text-sm font-semibold">CPU</th>
+                    <th className="px-6 py-4 text-sm font-semibold">Memoria</th>
+                    <th className="px-6 py-4 text-sm font-semibold">Almacenamiento</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {/* Fila 1 */}
+                  <tr className="hover:bg-slate-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="font-bold text-slate-800">PC de Escritorio</div>
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      <strong>Ryzen 7 3700X</strong><br/>8 Núcleos / 16 Hilos, 65W TDP, 7nm.
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      32GB DDR4 3200MHz
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      1TB NVMe SSD
+                    </td>
+                  </tr>
+                  {/* Fila 2 */}
+                  <tr className="hover:bg-slate-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="font-bold text-slate-800">Lenovo Legion 5</div>
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      <strong>Ryzen 7 4800H</strong><br/>8 Núcleos / 16 Hilos, 2.90 GHz Base.
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      16GB DDR4 3200MHz
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      512GB NVMe SSD
+                    </td>
+                  </tr>
+                  {/* Fila 3 */}
+                  <tr className="hover:bg-slate-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <div className="font-bold text-slate-800">Laptop Ultraportátil</div>
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      <strong>Ryzen 5 5500U</strong><br/>6 Núcleos / 12 Hilos, 15W TDP.
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      8GB DDR4 3200MHz
+                    </td>
+                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                      256GB NVMe SSD
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="p-4 bg-indigo-50 text-sm text-indigo-800">
+                <strong>Diferencias encontradas:</strong> La PC de escritorio tiene el procesador más potente y la mayor cantidad de memoria y almacenamiento, ideal para tareas intensivas. La Lenovo Legion 5 es un equipo balanceado para juegos y trabajo pesado. La laptop ultraportátil es la más eficiente en consumo de energía y portabilidad, a costa de un menor rendimiento.
+              </div>
+            </div>
+
+            {/* --- 2. Conexión de dispositivos --- */}
+            <div className="bg-slate-50 p-8 md:p-12 rounded-3xl border border-slate-100 shadow-sm relative overflow-hidden mb-8">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-100 rounded-bl-full opacity-50 z-0"></div>
+              <div className="relative z-10">
+                <h4 className="font-display font-bold text-2xl mb-6 text-slate-900 leading-tight">
+                  2. Conexión de dispositivos
+                </h4>
+                <div className="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-5 text-justify">
+                  <p>
+                    En el siguiente video se conectan dos dispositivos de entrada y dos de salida a un computador, describiendo los cables y conectores utilizados.
+                  </p>
+                  <video className="rounded-xl max-w-md mx-auto" controls>
+                    <source src={DispositivosMOV} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
