@@ -735,7 +735,7 @@ const Practice2 = () => {
                     En el siguiente video se desmonta una computadora para identificar las diferentes memorias del computador y describir brevemente su función.
                   </p>
                   <video className="rounded-xl max-w-md mx-auto" controls>
-                    <source src={MemoriaMOV} type="video/mp4" />
+                    <source src={MemoriaMP4} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -826,7 +826,7 @@ const Practice2 = () => {
                     En el siguiente video se conectan dos dispositivos de entrada y dos de salida a un computador, describiendo los cables y conectores utilizados.
                   </p>
                   <video className="rounded-xl max-w-md mx-auto" controls>
-                    <source src={DispositivosMOV} type="video/mp4" />
+                    <source src={DispositivosMP4} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
