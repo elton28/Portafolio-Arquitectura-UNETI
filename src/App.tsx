@@ -21,8 +21,8 @@ import fotoElton from "./assets/FotoElton.JPG";
 import cpu1 from "./assets/foto1.jpg";
 import cpu2 from "./assets/foto2.jpg";
 import cpu3 from "./assets/foto3.jpeg";
-import MemoriaMOV from "./assets/Memoria.MOV";
-import DispositivosMOV from "./assets/Dispositivos.MOV";
+import MemoriaMP4 from "./assets/Memoria.mp4";
+import DispositivosMP4 from "./assets/Dispositivos.mp4";
 
 // --- Components ---
 
