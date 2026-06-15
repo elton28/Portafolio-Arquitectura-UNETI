@@ -32,3 +32,6 @@ dist-ssr
 
 # TypeScript
 *.tsbuildinfo
+
+# Large media files
+/src/assets/Ensamblaje del computador.mp4

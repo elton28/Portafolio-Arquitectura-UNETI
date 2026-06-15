@@ -13,7 +13,11 @@ import {
   Linkedin,
   Layers,
   Zap,
-  Database
+  Database,
+  Video,
+  Play,
+  CheckCircle,
+  ShieldAlert
 } from "lucide-react";
 import { motion } from "framer-motion";
 import logoUNETI from "./assets/LogoUNETI.jpg";
@@ -43,6 +47,7 @@ const Navbar = () => {
     { name: "Autor", href: "#autor", icon: User },
     { name: "Práctica 1", href: "#practica1", icon: Layers },
     { name: "Práctica 2", href: "#practica2", icon: Cpu },
+    { name: "Práctica 3", href: "#practica3", icon: Wrench },
   ];
 
   return (
@@ -857,6 +862,240 @@ const Practice2 = () => {
   );
 };
 
+const Practice3 = () => {
+  const steps = [
+    {
+      title: "1. Preparación y Seguridad ESD",
+      phase: "Desarmado",
+      desc: "Desconexión de la fuente de poder del fluido eléctrico. Colocación de la pulsera antiestática (ESD) conectada a un punto de tierra del chasis para evitar dañar componentes sensibles como MOSFETs.",
+      icon: ShieldAlert,
+      color: "border-amber-200 bg-amber-50 text-amber-800"
+    },
+    {
+      title: "2. Apertura de Chasis y Desconexión",
+      phase: "Desarmado",
+      desc: "Apertura de las tapas laterales del gabinete. Desconexión sistemática de los cables de alimentación (ATX de 24 pines, EPS de 8 pines) y cables de datos (SATA, conectores de panel frontal).",
+      icon: Layers,
+      color: "border-slate-200 bg-slate-50 text-slate-800"
+    },
+    {
+      title: "3. Extracción de Módulos (RAM y GPU)",
+      phase: "Desarmado",
+      desc: "Retiro de la tarjeta gráfica (GPU) liberando el seguro de la ranura PCIe. Extracción de los módulos de memoria RAM abriendo los clips de retención de las ranuras DIMM.",
+      icon: Database,
+      color: "border-indigo-100 bg-indigo-50/50 text-indigo-800"
+    },
+    {
+      title: "4. Desmontaje de Disipador y CPU",
+      phase: "Desarmado",
+      desc: "Aflojamiento en cruz de los tornillos del disipador para liberar la presión uniformemente. Extracción cuidadosa del procesador (CPU) levantando la palanca de retención del zócalo (Socket).",
+      icon: Cpu,
+      color: "border-rose-100 bg-rose-50/30 text-rose-800"
+    },
+    {
+      title: "5. Limpieza e Inspección Visual",
+      phase: "Mantenimiento",
+      desc: "Limpieza de residuos de la pasta térmica antigua en la CPU y disipador usando alcohol isopropílico. Inspección de condensadores e integridad física del socket.",
+      icon: Wrench,
+      color: "border-cyan-100 bg-cyan-50/30 text-cyan-800"
+    },
+    {
+      title: "6. Montaje del Procesador y Pasta Térmica",
+      phase: "Ensamblado",
+      desc: "Inserción del procesador alineando la marca triangular con el zócalo. Bloqueo de la palanca. Aplicación de una gota central de pasta térmica de alta conductividad para transferir calor eficientemente.",
+      icon: Zap,
+      color: "border-yellow-100 bg-yellow-50/30 text-yellow-800"
+    },
+    {
+      title: "7. Instalación de Disipador, RAM y GPU",
+      phase: "Ensamblado",
+      desc: "Fijación del disipador en cruz para presión equilibrada. Colocación de los módulos de memoria RAM en canal dual (DIMM 2 y 4). Inserción y atornillado de la tarjeta gráfica en el slot PCIe principal.",
+      icon: Monitor,
+      color: "border-blue-100 bg-blue-50/30 text-blue-800"
+    },
+    {
+      title: "8. Conexión de Cables e Inicio (POST)",
+      phase: "Ensamblado",
+      desc: "Reconexión de todos los cables (fuente, ventiladores, panel frontal). Cierre del chasis y conexión a la red eléctrica. Encendido para validar que el sistema pasa el POST (Power-On Self-Test) y entra a la BIOS.",
+      icon: CheckCircle,
+      color: "border-emerald-200 bg-emerald-50 text-emerald-800"
+    }
+  ];
+
+  const componentsList = [
+    { name: "Procesador (CPU)", desc: "El cerebro lógico de la máquina, procesa los hilos de ejecución de software.", location: "Zócalo de la placa base (Socket)" },
+    { name: "Placa Base (Motherboard)", desc: "El sistema nervioso que interconecta todos los módulos y chips.", location: "Atornillado al chasis mediante separadores" },
+    { name: "Memoria RAM", desc: "Almacenamiento volátil ultra rápido para los datos de programas activos.", location: "Ranuras DIMM" },
+    { name: "Disipador / Cooler", desc: "Evacúa el calor térmico generado por la CPU para evitar sobrecalentamiento.", location: "Montado encima de la CPU con interfaz térmica" },
+    { name: "Tarjeta de Video (GPU)", desc: "Procesador dedicado a cálculos matemáticos paralelos y renderizado gráfico.", location: "Ranura PCIe x16" },
+    { name: "Fuente de Poder (PSU)", desc: "Transforma corriente alterna (AC) en continua (DC) regulada para los componentes.", location: "Compartimento inferior/superior del gabinete" },
+    { name: "Unidad SSD / HDD", desc: "Almacenamiento secundario persistente del sistema operativo y archivos.", location: "Bahías dedicadas o puertos M.2 NVMe" },
+    { name: "Gabinete / Chasis", desc: "Estructura física que protege y organiza los componentes internos, canalizando el flujo de aire.", location: "Carcasa exterior" }
+  ];
+
+  return (
+    <section id="practica3" className="py-24 bg-slate-50">
+      <div className="container mx-auto px-6">
+        <SectionTitle subtitle="Práctica de Laboratorio 3">Ensamblaje del Computador</SectionTitle>
+        
+        <div className="max-w-5xl mx-auto space-y-20">
+          
+          {/* --- Introducción a la Práctica --- */}
+          <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full opacity-60 pointer-events-none" />
+            <div className="relative z-10">
+              <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
+                Descripción General
+              </span>
+              <h3 className="font-display font-bold text-3xl text-slate-900 mb-6 leading-tight">
+                Integración de Componentes de Hardware
+              </h3>
+              <p className="text-slate-600 leading-relaxed text-justify mb-6">
+                El ensamblaje físico del hardware representa el paso en el cual la arquitectura de un computador pasa de ser un plano lógico de bloques y buses a convertirse en un sistema de procesamiento funcional. Esta práctica de laboratorio documenta en formato de video todo el proceso de desmontaje y reensamblaje de un computador. El objetivo es identificar la topología interna del equipo, verificar la conexión de las interfaces físicas de comunicación y alimentación, y aplicar las correctas directrices de mantenimiento preventivo y seguridad eléctrica.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Objetivo Físico</span>
+                  <p className="text-xs text-slate-500">Asegurar la colocación y torque térmico idóneo para evitar estrangulamiento por calor.</p>
+                </div>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Medida Crítica</span>
+                  <p className="text-xs text-slate-500">Manejo estricto de tierras y protección ESD durante todo el proceso de interacción física.</p>
+                </div>
+                <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Validación Final</span>
+                  <p className="text-xs text-slate-500">Comprobación del paso del Power-On Self-Test (POST) y lectura de parámetros en BIOS.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* --- Video de Ensamblaje --- */}
+          <div className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-xl">
+            <div className="bg-slate-900 text-white p-6 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-indigo-500/20 rounded-lg text-indigo-400">
+                  <Video size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">Registro en Video del Laboratorio</h4>
+                  <p className="text-xs text-slate-400">Desensamble y Ensamble Completo Paso a Paso</p>
+                </div>
+              </div>
+              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                YouTube
+              </span>
+            </div>
+            
+            <div className="p-8 bg-slate-950 flex flex-col items-center justify-center">
+              <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-inner border border-slate-800 bg-black relative">
+                <iframe 
+                  className="w-full h-full border-0"
+                  src="https://www.youtube.com/embed/vP50Tqa4xSQ"
+                  title="Práctica de Laboratorio 3: Ensamblaje del computador"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-xs text-center mt-6 max-w-xl">
+                Nota: El video muestra la manipulación física de los componentes, la extracción de memorias y tarjetas, la colocación térmica de la CPU y la reconexión total del sistema.
+              </p>
+            </div>
+          </div>
+
+          {/* --- Cronología del Proceso --- */}
+          <div>
+            <div className="text-center mb-10">
+              <h4 className="font-display font-bold text-3xl text-slate-900 mb-2">
+                Fases del Desmontaje y Reensamblaje
+              </h4>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Estructura metódica recomendada para desarmar y volver a integrar el hardware sin comprometer la integridad eléctrica.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {steps.map((step, idx) => (
+                <div key={idx} className={`p-6 rounded-2xl border-2 transition-all flex gap-4 ${step.color} hover:shadow-md hover:-translate-y-0.5 duration-200`}>
+                  <div className="flex-shrink-0 mt-1">
+                    <step.icon size={28} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
+                        {step.phase}
+                      </span>
+                      <h5 className="font-bold text-slate-800 text-base">{step.title}</h5>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed text-justify">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* --- Tabla de Componentes --- */}
+          <div>
+            <div className="text-center mb-10">
+              <h4 className="font-display font-bold text-3xl text-slate-900 mb-2">
+                Arquitectura Física: Checklist de Componentes
+              </h4>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Resumen de los componentes principales identificados y su función crítica dentro de la integración del sistema.
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm overflow-x-auto">
+              <table className="w-full text-left border-collapse min-w-[700px]">
+                <thead className="bg-slate-900 text-white">
+                  <tr>
+                    <th className="px-6 py-4 text-sm font-semibold w-1/4">Componente</th>
+                    <th className="px-6 py-4 text-sm font-semibold w-1/2">Función Arquitectónica</th>
+                    <th className="px-6 py-4 text-sm font-semibold w-1/4">Ubicación / Interfaz</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 text-sm">
+                  {componentsList.map((comp, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50 transition-colors">
+                      <td className="px-6 py-4 font-bold text-slate-800">{comp.name}</td>
+                      <td className="px-6 py-4 text-slate-600 leading-relaxed text-xs">{comp.desc}</td>
+                      <td className="px-6 py-4 font-mono text-xs text-indigo-600 font-semibold">{comp.location}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* --- Reflexión Final Práctica 3 --- */}
+          <div className="bg-indigo-900 text-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl border border-indigo-850">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Wrench size={120} />
+            </div>
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse" />
+                <span className="text-sm font-bold uppercase tracking-widest text-indigo-200">Reflexión Profesional</span>
+              </div>
+              <h3 className="text-3xl font-bold mb-6">El Impacto de la Precisión en el Hardware</h3>
+              <p className="text-indigo-100 leading-relaxed mb-6 text-lg text-justify">
+                Esta práctica de desarmado y armado de un computador consolida el entendimiento empírico de la arquitectura. En informática, a menudo interactuamos con el software desde niveles muy altos de abstracción. Sin embargo, presenciar físicamente cómo la presión del disipador, la dosificación de la pasta térmica y el encaje exacto de los buses lógicos (como los pines de la RAM o las líneas PCIe) determinan la estabilidad total del sistema nos devuelve a la realidad de la ingeniería básica: el mejor software del mundo fallará si el hardware subyacente presenta micro-cortes por descargas electroestáticas (ESD) o estrangulamiento térmico por un cooler mal ajustado. Ensamblar e inspeccionar cada parte fomenta la disciplina técnica indispensable para el desarrollo de soluciones óptimas.
+              </p>
+              <div className="flex items-center justify-between border-t border-indigo-700/50 pt-6 mt-6">
+                <div className="flex items-center gap-2 text-indigo-300 font-mono text-sm">
+                  <Calendar size={16} />
+                  <span>Fecha de creación: 15 de Junio, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => (
   <footer className="bg-slate-900 py-12 text-white">
     <div className="container mx-auto px-6">
@@ -902,6 +1141,7 @@ export default function App() {
         <AuthorSection />
         <Practice1 />
         <Practice2 />
+        <Practice3 />
       </main>
       <Footer />
     </div>
