@@ -17,7 +17,10 @@ import {
   Video,
   Play,
   CheckCircle,
-  ShieldAlert
+  ShieldAlert,
+  Terminal,
+  Settings,
+  Server
 } from "lucide-react";
 import { motion } from "framer-motion";
 import logoUNETI from "./assets/LogoUNETI.jpg";
@@ -48,6 +51,7 @@ const Navbar = () => {
     { name: "Práctica 1", href: "#practica1", icon: Layers },
     { name: "Práctica 2", href: "#practica2", icon: Cpu },
     { name: "Práctica 3", href: "#practica3", icon: Wrench },
+    { name: "Práctica 4", href: "#practica4", icon: Terminal },
   ];
 
   return (
@@ -1096,6 +1100,351 @@ const Practice3 = () => {
   );
 };
 
+const Practice3Software = () => {
+  const steps = [
+    {
+      title: "1. Descarga de Recursos y Preparación",
+      phase: "Fase Inicial",
+      desc: "Descarga del instalador de Oracle VM VirtualBox y su respectivo Extension Pack desde la web oficial. Asimismo, descarga de la imagen ISO de Fedora Workstation de 64 bits.",
+      icon: Layers,
+      color: "border-indigo-100 bg-indigo-50/30 text-indigo-800"
+    },
+    {
+      title: "2. Instalación de VirtualBox y Extension Pack",
+      phase: "Fase Inicial",
+      desc: "Instalación del hipervisor VirtualBox en el sistema operativo anfitrión (Windows). Registro del Extension Pack para desbloquear compatibilidad de puertos USB 2.0/3.0, carpetas compartidas y soporte avanzado de hardware.",
+      icon: Settings,
+      color: "border-slate-200 bg-slate-50 text-slate-800"
+    },
+    {
+      title: "3. Creación y Alojamiento de la VM",
+      phase: "Configuración",
+      desc: "Configuración de una nueva máquina virtual llamada 'Virtual Machine Fedora'. Selección de un directorio de almacenamiento en una unidad secundaria para no saturar el disco C: principal.",
+      icon: Database,
+      color: "border-amber-200 bg-amber-50 text-amber-800"
+    },
+    {
+      title: "4. Asignación de Recursos de Hardware",
+      phase: "Configuración",
+      desc: "Reserva de recursos lógicos: 8 GB de memoria RAM y un CPU de 4 núcleos virtuales para garantizar una emulación fluida del entorno gráfico GNOME. Espacio en disco de 25 GB.",
+      icon: Cpu,
+      color: "border-rose-100 bg-rose-50/30 text-rose-800"
+    },
+    {
+      title: "5. Arranque e Instalación del Sistema Operativo",
+      phase: "Instalación",
+      desc: "Inicio de la máquina virtual con la ISO montada. Selección de idioma (Español de Venezuela) en el instalador gráfico Anaconda y asignación del disco virtual de 25 GB, iniciando la copia del sistema operativo.",
+      icon: Play,
+      color: "border-cyan-100 bg-cyan-50/30 text-cyan-800"
+    },
+    {
+      title: "6. Desmontaje de la Imagen ISO",
+      phase: "Optimización",
+      desc: "Apagado completo de la VM tras finalizar la instalación. Desmontaje manual de la imagen ISO en las opciones de almacenamiento de VirtualBox para evitar que la máquina arranque nuevamente desde el instalador en vivo.",
+      icon: ShieldAlert,
+      color: "border-yellow-100 bg-yellow-50/30 text-yellow-800"
+    },
+    {
+      title: "7. Post-instalación y Creación de Usuario",
+      phase: "Finalización",
+      desc: "Reinicio de la máquina virtual desde el disco duro. Configuración de distribución de teclado (Español de Windows), creación de credenciales de usuario con contraseña y omisión del tour introductorio de GNOME.",
+      icon: CheckCircle,
+      color: "border-emerald-200 bg-emerald-50 text-emerald-800"
+    },
+    {
+      title: "8. Validación con Fastfetch",
+      phase: "Verificación",
+      desc: "Apertura de la terminal de Fedora e instalación/ejecución del comando 'fastfetch' para extraer los datos técnicos del sistema operativo virtualizado y la arquitectura emulada de hardware.",
+      icon: Terminal,
+      color: "border-blue-100 bg-blue-50/30 text-blue-800"
+    }
+  ];
+
+  const vmSpecs = [
+    { label: "Hipervisor", value: "Oracle VM VirtualBox v7.x", icon: Server },
+    { label: "Sistema Operativo Huésped", value: "Fedora Workstation 40 (64-bit)", icon: Monitor },
+    { label: "Memoria RAM Asignada", value: "8.0 GB (8192 MB)", icon: Database },
+    { label: "Procesador Virtual (vCPUs)", value: "4 Núcleos Lógicos", icon: Cpu },
+    { label: "Almacenamiento Virtual", value: "25 GB VDI (Dinámico)", icon: Layers },
+    { label: "Paquete de Extensiones", value: "VirtualBox Extension Pack (Instalado)", icon: Wrench },
+    { label: "Interfaz de Red", value: "Adaptador NAT (Red interna con salida externa)", icon: CheckCircle },
+    { label: "Entorno de Escritorio", value: "GNOME Desktop (Wayland)", icon: User }
+  ];
+
+  const challenges = [
+    {
+      title: "Bucle de Arranque del Instalador (Boot Loop)",
+      problem: "Al completar la instalación y reiniciar la máquina virtual, el sistema volvía a iniciar el instalador 'Live ISO' de Fedora de forma cíclica.",
+      solution: "Se apagó la VM y se desmontó/retiró manualmente la imagen ISO del lector de CD/DVD virtual en la configuración de almacenamiento de VirtualBox, permitiendo que iniciara desde el disco de 25GB.",
+      status: "Solucionado"
+    },
+    {
+      title: "Rendimiento y Compatibilidad de Hardware",
+      problem: "Rendimiento lento del entorno gráfico GNOME y falta de soporte para puertos USB rápidos o redimensionamiento dinámico de pantalla.",
+      solution: "Se instaló el 'VirtualBox Extension Pack' en el sistema anfitrión y se asignó un perfil de hardware adecuado (8GB de RAM y 4 núcleos de CPU), logrando una emulación fluida del sistema operativo.",
+      status: "Solucionado"
+    },
+    {
+      title: "Limitación de Espacio en el Disco Anfitrión (C:)",
+      problem: "El disco de arranque del sistema principal presentaba poco espacio libre para soportar el disco virtual (.vdi) del sistema operativo huésped.",
+      solution: "Se redefinió el directorio predeterminado de almacenamiento de VirtualBox hacia una unidad de disco secundaria dedicada, guardando allí todos los datos sin afectar el disco del sistema principal.",
+      status: "Solucionado"
+    }
+  ];
+
+  return (
+    <section id="practica4" className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <SectionTitle subtitle="Práctica de Laboratorio 4">Sistemas Operativos</SectionTitle>
+        
+        <div className="max-w-5xl mx-auto space-y-20">
+          
+          {/* --- Introducción a la Práctica --- */}
+          <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-200 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-50 rounded-bl-full opacity-60 pointer-events-none" />
+            <div className="relative z-10">
+              <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
+                Descripción General
+              </span>
+              <h3 className="font-display font-bold text-3xl text-slate-900 mb-6 leading-tight">
+                Instalación y Configuración de Sistemas Operativos en Entornos Virtualizados
+              </h3>
+              <p className="text-slate-600 leading-relaxed text-justify mb-6">
+                La virtualización es una tecnología pilar en la arquitectura del computador moderna, permitiendo la coexistencia y ejecución de múltiples entornos lógicos independientes (sistemas operativos huéspedes) sobre un único hardware físico anfitrión. En esta práctica de laboratorio, se documenta paso a paso la instalación del hipervisor Oracle VM VirtualBox en un sistema anfitrión y la configuración de una máquina virtual para alojar el sistema operativo Fedora Workstation. A través de este proceso se analizan los mecanismos de abstracción de hardware, la gestión de memoria virtual, la partición lógica del almacenamiento y la configuración del kernel.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 mt-8">
+                <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Hipervisor Lógico</span>
+                  <p className="text-xs text-slate-500">Virtualización tipo 2 utilizando VirtualBox para la mediación de recursos lógicos.</p>
+                </div>
+                <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Entorno Huésped</span>
+                  <p className="text-xs text-slate-500">Implementación de Fedora Workstation, base de desarrollo y testeo para RHEL.</p>
+                </div>
+                <div className="p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                  <span className="font-bold text-indigo-600 block text-lg mb-1">Verificación de Kernel</span>
+                  <p className="text-xs text-slate-500">Diagnóstico detallado y extracción de metadatos del sistema huésped usando terminal.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* --- Video de la Práctica --- */}
+          <div className="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
+            <div className="bg-slate-950 text-white p-6 flex items-center justify-between border-b border-slate-800">
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-indigo-500/20 rounded-lg text-indigo-400">
+                  <Video size={24} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">Registro en Video del Laboratorio</h4>
+                  <p className="text-xs text-slate-400">Puesta en Marcha de la Máquina Virtual e Instalación de Fedora</p>
+                </div>
+              </div>
+              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white">
+                YouTube
+              </span>
+            </div>
+            
+            <div className="p-8 bg-slate-950 flex flex-col items-center justify-center">
+              <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-inner border border-slate-800 bg-black relative">
+                <iframe 
+                  className="w-full h-full border-0"
+                  src="https://www.youtube.com/embed/Yt_bv2T6rgw"
+                  title="Práctica de Laboratorio 3 (Software): Instalación y Configuración de Sistemas Operativos"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+              <p className="text-slate-400 text-xs text-center mt-6 max-w-xl">
+                Nota: El video tutorial abarca la descarga de VirtualBox, la configuración de recursos en la máquina virtual, la instalación guiada de Fedora y la posterior validación del sistema en terminal con Fastfetch.
+              </p>
+            </div>
+          </div>
+
+          {/* --- Ficha Técnica y Terminal --- */}
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            
+            {/* Especificaciones de Virtualización */}
+            <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm">
+              <h4 className="font-display font-bold text-2xl text-slate-900 mb-6 flex items-center gap-2">
+                <Server className="text-indigo-600" size={24} />
+                Ficha Técnica: Recursos Virtuales
+              </h4>
+              <p className="text-sm text-slate-500 mb-6">
+                Estructura y asignación del hardware virtualizado para emular de forma aislada la máquina huésped.
+              </p>
+              
+              <div className="space-y-4">
+                {vmSpecs.map((spec, idx) => (
+                  <div key={idx} className="flex items-center gap-4 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div className="p-2 bg-indigo-100 text-indigo-700 rounded-lg">
+                      <spec.icon size={18} />
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">{spec.label}</span>
+                      <span className="text-sm font-bold text-slate-800">{spec.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Simulación Terminal Fastfetch */}
+            <div className="bg-[#1e1e2e] rounded-3xl border border-slate-800 overflow-hidden shadow-xl text-[#cdd6f4] font-mono h-full flex flex-col animate-fadeIn">
+              {/* Header de la terminal */}
+              <div className="bg-[#11111b] px-4 py-3 flex items-center justify-between border-b border-[#313244]">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#f38ba8]" />
+                  <div className="w-3 h-3 rounded-full bg-[#f9e2af]" />
+                  <div className="w-3 h-3 rounded-full bg-[#a6e3a1]" />
+                </div>
+                <span className="text-xs text-[#a6adc8]">elton@fedora:~</span>
+                <div className="w-12" />
+              </div>
+              
+              {/* Contenido de la terminal */}
+              <div className="p-6 text-xs md:text-sm leading-relaxed flex-1 overflow-x-auto">
+                <div className="flex gap-2 mb-4 text-[#89b4fa]">
+                  <span>[elton@fedora ~]$</span>
+                  <span className="text-white animate-pulse">fastfetch</span>
+                </div>
+                
+                <div className="grid grid-cols-[auto_1fr] gap-4">
+                  {/* Logo de Fedora en ASCII Art */}
+                  <div className="text-[#89b4fa] font-bold leading-none hidden sm:block whitespace-pre">
+{`          ,,eee,,
+        ,eP"     "Y2,
+      ,eP"         "Y2,
+     dP"             "Yb
+    dI                 Ib
+    I8                 8I
+    Ib                 dI
+     Yb             dP"
+      "Y2,         ,2P"
+        "Y2,     ,2P"
+          ""eee""`}
+                  </div>
+                  {/* Datos del sistema */}
+                  <div className="space-y-1">
+                    <div><span className="text-[#f38ba8] font-bold">elton</span><span className="text-[#a6adc8]">@</span><span className="text-[#a6e3a1] font-bold">fedora</span></div>
+                    <div>-------------------</div>
+                    <div><span className="text-[#89b4fa] font-bold">OS:</span> Fedora Linux 40 (Workstation Edition) x86_64</div>
+                    <div><span className="text-[#89b4fa] font-bold">Host:</span> VirtualBox 1.2</div>
+                    <div><span className="text-[#89b4fa] font-bold">Kernel:</span> 6.8.5-300.fc40.x86_64</div>
+                    <div><span className="text-[#89b4fa] font-bold">Uptime:</span> 3 mins</div>
+                    <div><span className="text-[#89b4fa] font-bold">Shell:</span> bash 5.2.26</div>
+                    <div><span className="text-[#89b4fa] font-bold">Resolution:</span> 1920x1080 (Virtual)</div>
+                    <div><span className="text-[#89b4fa] font-bold">DE:</span> GNOME 46.0</div>
+                    <div><span className="text-[#89b4fa] font-bold">WM:</span> Mutter</div>
+                    <div><span className="text-[#89b4fa] font-bold">Terminal:</span> gnome-terminal</div>
+                    <div><span className="text-[#89b4fa] font-bold">CPU:</span> AMD Ryzen 7 3700X (4) @ 3.59GHz</div>
+                    <div><span className="text-[#89b4fa] font-bold">GPU:</span> VM Graphics Adapter</div>
+                    <div><span className="text-[#89b4fa] font-bold">Memory:</span> 1.22 GiB / 7.78 GiB (15%)</div>
+                    <div><span className="text-[#89b4fa] font-bold">Disk (/):</span> 9.20 GiB / 24.12 GiB (38%)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* --- Fases de la Práctica (Cronología) --- */}
+          <div>
+            <div className="text-center mb-12">
+              <h4 className="font-display font-bold text-3xl text-slate-900 mb-2">
+                Procedimiento de Instalación Paso a Paso
+              </h4>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Secuencia lógica de pasos seguidos para configurar la máquina virtual y llevar a cabo la instalación limpia del sistema operativo Fedora.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {steps.map((step, idx) => (
+                <div key={idx} className={`p-6 rounded-2xl border-2 transition-all flex gap-4 ${step.color} hover:shadow-md hover:-translate-y-0.5 duration-200`}>
+                  <div className="flex-shrink-0 mt-1">
+                    <step.icon size={28} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
+                        {step.phase}
+                      </span>
+                      <h5 className="font-bold text-slate-800 text-base">{step.title}</h5>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed text-justify">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* --- Dificultades y Soluciones --- */}
+          <div>
+            <div className="text-center mb-12">
+              <h4 className="font-display font-bold text-3xl text-slate-900 mb-2">
+                Dificultades Técnicas y Soluciones Aplicadas
+              </h4>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Incidentes encontrados durante el proceso de instalación y las metodologías empleadas para solucionarlos.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {challenges.map((item, idx) => (
+                <div key={idx} className="bg-slate-50 rounded-2xl p-6 border border-slate-200 relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-bold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded">
+                        Problema {idx + 1}
+                      </span>
+                      <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1">
+                        <CheckCircle size={12} /> {item.status}
+                      </span>
+                    </div>
+                    <h5 className="font-bold text-slate-800 text-base mb-3 leading-snug">{item.title}</h5>
+                    <p className="text-xs text-slate-500 font-bold mb-1">Dificultad:</p>
+                    <p className="text-xs text-slate-600 text-justify mb-4 leading-relaxed">{item.problem}</p>
+                  </div>
+                  <div className="pt-4 border-t border-slate-200/60">
+                    <p className="text-xs text-indigo-700 font-bold mb-1">Resolución:</p>
+                    <p className="text-xs text-slate-600 text-justify leading-relaxed">{item.solution}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* --- Reflexión Final --- */}
+          <div className="bg-indigo-900 text-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-2xl border border-indigo-950">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+              <Terminal size={120} />
+            </div>
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-3 h-3 bg-indigo-400 rounded-full animate-pulse" />
+                <span className="text-sm font-bold uppercase tracking-widest text-indigo-200">Reflexión Profesional</span>
+              </div>
+              <h3 className="text-3xl font-bold mb-6">La Abstracción por Software en la Arquitectura</h3>
+              <p className="text-indigo-100 leading-relaxed mb-6 text-lg text-justify">
+                Esta práctica de sistemas operativos y virtualización demuestra cómo el software moldea y gestiona el hardware físico disponible. La virtualización nos enseña que el hardware no es un bloque estático e inamovible, sino un conjunto de recursos dinámicos que un hipervisor puede multiplexar y distribuir a voluntad. Comprender la configuración de recursos, el montaje de imágenes de disco y la gestión del kernel en una máquina virtual es vital para cualquier desarrollador o ingeniero de sistemas. El kernel de Fedora, siendo la base donde se prueban las últimas innovaciones de Linux antes de llegar a Red Hat (RHEL), nos ofrece una perspectiva única sobre el control a bajo nivel del microprocesador, la memoria y el almacenamiento persistente, cerrando la brecha fundamental entre los componentes físicos y el software de aplicación.
+              </p>
+              <div className="flex items-center justify-between border-t border-indigo-700/50 pt-6 mt-6">
+                <div className="flex items-center gap-2 text-indigo-300 font-mono text-sm">
+                  <Calendar size={16} />
+                  <span>Fecha de creación: 19 de Junio, 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => (
   <footer className="bg-slate-900 py-12 text-white">
     <div className="container mx-auto px-6">
@@ -1142,6 +1491,7 @@ export default function App() {
         <Practice1 />
         <Practice2 />
         <Practice3 />
+        <Practice3Software />
       </main>
       <Footer />
     </div>
