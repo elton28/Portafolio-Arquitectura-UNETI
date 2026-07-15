@@ -416,18 +416,18 @@ export default function Practice5() {
                   Clasificación conceptual del equipamiento químico, mecánico y de seguridad electroestática indispensable para llevar a cabo la intervención física y el mantenimiento del computador de forma segura.
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   {tools.map((t) => {
                     const ToolIcon = t.icon;
                     return (
-                      <div key={t.id} className="bg-slate-50/75 rounded-2xl p-5 border border-slate-105 flex gap-4 items-start hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                      <div key={t.id} className="bg-slate-50/75 rounded-2xl p-5 border border-slate-105 flex flex-col sm:flex-row gap-4 items-start hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
                         <div className={`p-3 rounded-xl flex-shrink-0 bg-white shadow-sm border border-slate-100 ${t.color.split(' ')[1]}`}>
                           <ToolIcon size={20} />
                         </div>
-                        <div className="space-y-1">
-                          <div className="flex items-center gap-2">
-                            <h5 className="font-bold text-slate-800 text-base leading-none">{t.name}</h5>
-                            <span className="text-xs font-bold text-indigo-500 bg-indigo-50/50 px-2 py-0.5 rounded border border-indigo-100">
+                        <div className="space-y-1.5 flex-1 w-full">
+                          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-2">
+                            <h5 className="font-bold text-slate-800 text-base leading-tight">{t.name}</h5>
+                            <span className="text-xs font-bold text-indigo-500 bg-indigo-50/50 px-2 py-0.5 rounded border border-indigo-100 w-max">
                               {t.category}
                             </span>
                           </div>
