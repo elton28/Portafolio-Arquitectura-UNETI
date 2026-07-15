@@ -20,10 +20,21 @@ import {
   ShieldAlert,
   Terminal,
   Settings,
-  Server
+  Server,
+  Clock,
+  Sparkles,
+  Trash2,
+  Camera,
+  Printer,
+  MousePointer,
+  Volume2,
+  Mic,
+  AlertTriangle,
+  Info
 } from "lucide-react";
 import { motion } from "framer-motion";
 import logoUNETI from "./assets/LogoUNETI.jpg";
+import Practice5 from "./Practice5";
 import fotoElton from "./assets/FotoElton.JPG";
 import cpu1 from "./assets/foto1.jpg";
 import cpu2 from "./assets/foto2.jpg";
@@ -52,6 +63,7 @@ const Navbar = () => {
     { name: "Práctica 2", href: "#practica2", icon: Cpu },
     { name: "Práctica 3", href: "#practica3", icon: Wrench },
     { name: "Práctica 4", href: "#practica4", icon: Terminal },
+    { name: "Práctica 5", href: "#practica5", icon: Settings },
   ];
 
   return (
@@ -186,10 +198,10 @@ const Hero = () => {
 };
 
 const SectionTitle = ({ children, subtitle, id }: { children: ReactNode, subtitle?: string, id?: string }) => (
-  <div id={id} className="mb-12 text-center">
-    <h2 className="font-display text-4xl font-bold text-slate-900 mb-2">{children}</h2>
-    {subtitle && <p className="text-indigo-600 font-medium">{subtitle}</p>}
-    <div className="w-20 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full" />
+  <div id={id} className="mb-16 text-center">
+    <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 mb-3">{children}</h2>
+    {subtitle && <p className="text-indigo-600 font-bold uppercase tracking-wider text-xs md:text-sm">{subtitle}</p>}
+    <div className="w-24 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full shadow-sm" />
   </div>
 );
 
@@ -253,7 +265,7 @@ const Practice1 = () => {
         {/* === Organizador Gráfico: Análisis Comparativo === */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-slate-800">Organizador Gráfico: Computación Clásica vs. Cuántica</h3>
+            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3"><Layers className="text-indigo-600" size={32} /> Organizador Gráfico: Computación Clásica vs. Cuántica</h3>
             <p className="text-slate-600 mt-2 max-w-2xl mx-auto">Análisis comparativo de las arquitecturas que definen el presente y el futuro del procesamiento de datos.</p>
           </div>
 
@@ -317,10 +329,10 @@ const Practice1 = () => {
         {/* === Sección del Algoritmo Cuántico (Infografía de Grover) === */}
         <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-xl mb-12">
           <div className="text-center mb-10">
-            <h4 className="font-display font-bold text-3xl mb-4 flex items-center justify-center gap-3 text-slate-900">
-              <Microchip className="text-indigo-600" size={32} />
+            <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3">
+              <Cpu className="text-indigo-600" size={32} />
               Infografía: El Algoritmo de Grover
-            </h4>
+            </h3>
             <p className="text-slate-600 max-w-2xl mx-auto">
               Diseñado en 1996 por Lov Grover, es un algoritmo cuántico que ofrece una aceleración cuadrática para búsquedas en bases de datos no estructuradas.
             </p>
@@ -512,8 +524,8 @@ const Practice1 = () => {
                       <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded block w-max mb-1">AMD</span>
                       <span className="text-xs text-slate-600">Zen 2 (Matisse)</span>
                     </td>
-                    <td className="px-6 py-4 font-mono text-xs text-slate-500 font-bold">AM4 (1331)</td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 font-mono text-sm text-slate-500 font-bold">AM4 (1331)</td>
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Specs:</strong> 8 Núcleos / 16 Hilos, 65W TDP, 7nm.<br/>
                       <strong>Cuidado:</strong> CPU de escritorio de alto rendimiento. Requiere recambio de pasta térmica anual and mantener el chasis libre de polvo para evitar la obstrucción del disipador.
                     </td>
@@ -528,8 +540,8 @@ const Practice1 = () => {
                       <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded block w-max mb-1">AMD</span>
                       <span className="text-xs text-slate-600">Zen 2 (Renoir)</span>
                     </td>
-                    <td className="px-6 py-4 font-mono text-xs text-slate-500 font-bold">FP6 (BGA)</td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 font-mono text-sm text-slate-500 font-bold">FP6 (BGA)</td>
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Specs:</strong> 8 Núcleos / 16 Hilos, 2.90 GHz Base.<br/>
                       <strong>Cuidado:</strong> Procesador móvil de alto voltaje soldado a la placa (BGA). Para cargas pesadas (Unreal Engine / Docker), es vital usar bases refrigerantes y monitorear el *thermal throttling*.
                     </td>
@@ -544,8 +556,8 @@ const Practice1 = () => {
                       <span className="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded block w-max mb-1">AMD</span>
                       <span className="text-xs text-slate-600">Zen 2 (Lucienne)</span>
                     </td>
-                    <td className="px-6 py-4 font-mono text-xs text-slate-500 font-bold">FP6 (BGA)</td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 font-mono text-sm text-slate-500 font-bold">FP6 (BGA)</td>
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Specs:</strong> 6 Núcleos / 12 Hilos, 15W TDP.<br/>
                       <strong>Cuidado:</strong> Diseñado para eficiencia energética ("U" de Ultra-low power). Evitar usar el equipo sobre superficies blandas (camas, telas) para no ahogar las tomas de aire inferiores.
                     </td>
@@ -598,36 +610,36 @@ const Practice1 = () => {
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Destornilladores de Precisión</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Philips / Torx / Hex</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Philips / Torx / Hex</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Apertura segura del chasis y desensamble de disipadores. El uso de puntas magnetizadas previene la pérdida de tornillos en zonas críticas de la placa base.
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Kit de Desmontaje (Spudgers)</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Palancas Antiestáticas</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Palancas Antiestáticas</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Herramientas de nailon o plástico diseñadas para separar conectores ZIF y cables planos sin rayar las pistas de cobre o causar cortocircuitos.
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Pulsera Antiestática (ESD)</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Protección Activa</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Protección Activa</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Ecualiza el potencial eléctrico entre el técnico y el equipo, drenando la carga estática a tierra para proteger los MOSFETs y puertas lógicas sensibles.
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Pasta Térmica de Alto Rendimiento</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Material de Interfaz</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Material de Interfaz</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Rellena las imperfecciones microscópicas entre el IHS de la CPU y la base del disipador, optimizando la transferencia de calor y evitando el thermal throttling.
                         </td>
                       </tr>
@@ -654,36 +666,36 @@ const Practice1 = () => {
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">CPU-Z / HWiNFO64</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Windows Diagnostic</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Windows Diagnostic</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Lectura directa de los registros de la CPU. Permite verificar voltajes de núcleo (Vcore), latencias de RAM y la topología de los niveles de caché (L1/L2/L3).
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Fastfetch / Neofetch</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Linux CLI</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Linux CLI</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Herramientas de terminal para la extracción rápida de metadatos del hardware, incluyendo la versión del Kernel, arquitectura de CPU y consumo de memoria activa.
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">MemTest86+</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Integridad de Memoria</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Integridad de Memoria</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Software de bajo nivel que opera fuera del SO para testear cada dirección de memoria RAM, detectando errores de direccionamiento o fallos en las celdas de memoria.
                         </td>
                       </tr>
                       <tr>
                         <td className="px-4 py-4">
                           <div className="font-bold text-slate-800 text-sm">Cinebench / Prime95</div>
-                          <span className="text-[10px] text-indigo-600 font-bold uppercase">Stress Testing</span>
+                          <span className="text-xs text-indigo-600 font-bold uppercase">Stress Testing</span>
                         </td>
-                        <td className="px-4 py-4 text-xs text-slate-600 leading-relaxed">
+                        <td className="px-4 py-4 text-sm text-slate-600 leading-relaxed">
                           Somete a la arquitectura a cargas de trabajo extremas para validar la estabilidad del sistema y la eficiencia del diseño térmico bajo máxima demanda.
                         </td>
                       </tr>
@@ -794,13 +806,13 @@ const Practice2 = () => {
                     <td className="px-6 py-4">
                       <div className="font-bold text-slate-800">PC de Escritorio</div>
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Ryzen 7 3700X</strong><br/>8 Núcleos / 16 Hilos, 65W TDP, 7nm.
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       32GB DDR4 3200MHz
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       1TB NVMe SSD
                     </td>
                   </tr>
@@ -809,13 +821,13 @@ const Practice2 = () => {
                     <td className="px-6 py-4">
                       <div className="font-bold text-slate-800">Lenovo Legion 5</div>
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Ryzen 7 4800H</strong><br/>8 Núcleos / 16 Hilos, 2.90 GHz Base.
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       16GB DDR4 3200MHz
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       512GB NVMe SSD
                     </td>
                   </tr>
@@ -824,13 +836,13 @@ const Practice2 = () => {
                     <td className="px-6 py-4">
                       <div className="font-bold text-slate-800">Laptop Ultraportátil</div>
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       <strong>Ryzen 5 5500U</strong><br/>6 Núcleos / 12 Hilos, 15W TDP.
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       8GB DDR4 3200MHz
                     </td>
-                    <td className="px-6 py-4 text-xs text-slate-600 leading-relaxed">
+                    <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">
                       256GB NVMe SSD
                     </td>
                   </tr>
@@ -951,7 +963,8 @@ const Practice3 = () => {
               <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-4">
                 Descripción General
               </span>
-              <h3 className="font-display font-bold text-3xl text-slate-900 mb-6 leading-tight">
+              <h3 className="font-display text-3xl font-bold text-slate-800 mb-8 border-b-2 border-indigo-100 pb-4 flex items-center gap-3">
+                <Cpu className="text-indigo-600" size={32} />
                 Integración de Componentes de Hardware
               </h3>
               <p className="text-slate-600 leading-relaxed text-justify mb-6">
@@ -986,7 +999,7 @@ const Practice3 = () => {
                   <p className="text-xs text-slate-400">Desensamble y Ensamble Completo Paso a Paso</p>
                 </div>
               </div>
-              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">
+              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 YouTube
               </span>
             </div>
@@ -1026,12 +1039,12 @@ const Practice3 = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
+                      <span className="text-xs font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
                         {step.phase}
                       </span>
                       <h5 className="font-bold text-slate-800 text-base">{step.title}</h5>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed text-justify">{step.desc}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed text-justify">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -1062,7 +1075,7 @@ const Practice3 = () => {
                   {componentsList.map((comp, idx) => (
                     <tr key={idx} className="hover:bg-slate-50 transition-colors">
                       <td className="px-6 py-4 font-bold text-slate-800">{comp.name}</td>
-                      <td className="px-6 py-4 text-slate-600 leading-relaxed text-xs">{comp.desc}</td>
+                      <td className="px-6 py-4 text-sm text-slate-600 leading-relaxed">{comp.desc}</td>
                       <td className="px-6 py-4 font-mono text-xs text-indigo-600 font-semibold">{comp.location}</td>
                     </tr>
                   ))}
@@ -1241,7 +1254,7 @@ const Practice3Software = () => {
                   <p className="text-xs text-slate-400">Puesta en Marcha de la Máquina Virtual e Instalación de Fedora</p>
                 </div>
               </div>
-              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-white">
+              <span className="hidden sm:inline-block bg-red-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white">
                 YouTube
               </span>
             </div>
@@ -1282,7 +1295,7 @@ const Practice3Software = () => {
                       <spec.icon size={18} />
                     </div>
                     <div>
-                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider block">{spec.label}</span>
+                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider block">{spec.label}</span>
                       <span className="text-sm font-bold text-slate-800">{spec.value}</span>
                     </div>
                   </div>
@@ -1368,12 +1381,12 @@ const Practice3Software = () => {
                   </div>
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
+                      <span className="text-xs font-bold uppercase px-2 py-0.5 rounded bg-white/60 border border-current/20">
                         {step.phase}
                       </span>
                       <h5 className="font-bold text-slate-800 text-base">{step.title}</h5>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed text-justify">{step.desc}</p>
+                    <p className="text-sm text-slate-600 leading-relaxed text-justify">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -1445,6 +1458,8 @@ const Practice3Software = () => {
   );
 };
 
+// --- Práctica 5: Mantenimiento Preventivo y Correctivo (Importado) ---
+
 const Footer = () => (
   <footer className="bg-slate-900 py-12 text-white">
     <div className="container mx-auto px-6">
@@ -1492,6 +1507,7 @@ export default function App() {
         <Practice2 />
         <Practice3 />
         <Practice3Software />
+        <Practice5 />
       </main>
       <Footer />
     </div>
